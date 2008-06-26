@@ -17,6 +17,8 @@ module Gitjour
             list
           when "clone"
             clone(*args)
+          when "pull"
+            pull(*args)
           when "serve"
             serve(*args)
           when "remote"
@@ -53,6 +55,19 @@ module Gitjour
         puts "Connecting to #{service.host}:#{service.port}"
 
         system "git clone git://#{service.host}:#{service.port}/ #{dir}/"
+      end
+      
+      def pull(repository_name, *rest)
+
+        puts "Pullign from '#{repository_name}'..."
+
+        unless service = locate_repo(repository_name)
+          exit_with! "ERROR: Unable to find project named '#{repository_name}'"
+        end
+
+        puts "Connecting to #{service.host}:#{service.port}"
+
+        system "git pull git://#{service.host}:#{service.port}/"
       end
 
       def remote(repository_name, *rest)
