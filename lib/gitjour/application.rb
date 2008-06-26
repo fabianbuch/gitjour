@@ -115,6 +115,9 @@ module Gitjour
         puts "  clone <project> [<directory>]"
         puts "      Clone a gitjour served repository."
         puts
+        puts "  pull <project>"
+        puts "      Pull (fetch and merge) from a gitjour served repository."
+        puts
         puts "  serve <path_to_project> [<name_of_project>] [<port>] or"
         puts "        <path_to_projects>"
         puts "      Serve up the current directory or projects via gitjour."
